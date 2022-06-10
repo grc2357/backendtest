@@ -143,12 +143,19 @@ def sync_data(countries_api_url, currencies_api_url):
     currency_symbols_in_db = set(Currency.objects.values_list("symbol", 
                                 flat=True))
     
+    countries_to_delete = []
+    currencies_to_delete = []
+    
     for symbol in currency_symbols_in_db:
         if symbol not in currency_symbols:
-            Currency.objects.get(symbol=symbol).delete()
+            currencies_to_delete.append(symbol)
+    
+    Currency.objects.filter(symbol__in=currencies_to_delete).delete()
 
     for symbol in country_symbols_in_db:
         if symbol not in country_symbols:
-            Country.objects.get(symbol=symbol).delete()
+            countries_to_delete.append(symbol)
+
+    Country.objects.filter(symbol__in=countries_to_delete).delete()
 
     return
