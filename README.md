@@ -117,3 +117,23 @@ You could also add capability to measure test coverage so that we know for sure 
 ### Finally
 
 Save all you changes & push them to your forked version of this repository, and email us back the URL to your forked version. Do not file a pull request (or else other candidates will see your work).
+
+# A quick note on my solution
+
+## Structure
+
+I have tried, as much as possible, to not change the structure that you have set up.
+The only exceptions are as follows:
+
+1. In the `Command` class of `syncdata.py`, I have added functions to allow different urls to be used. This was done so that I could send incorrect and blank urls in testing.
+2. I did complete the bonus task and I've put the code for testing `syncdata.py` in a separate class in `test_syncdata.py`.
+
+## pytest --cov
+
+I did check that the coverage of my code was 100% with `pytest-cov`.
+I have added this to requirements.txt, so once you are setup, you can check the coverage by running
+`pytest --cov`.
+
+## Notes
+
+I have added notes throughout the code, which I hope will explain my thought process, as well as the function of the code.
